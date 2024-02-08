@@ -1,0 +1,120 @@
+---
+import MenuIcon from '../icons/Menu.astro'
+import HomeIcon from '../icons/Home.astro'
+import SearchIcon from '../icons/Search.astro'
+import PlusIcon from '../icons/Plus.astro'
+import SideMenuItem from './SideMenuItem.astro'
+import RightArrowIcon from '../icons/RightArrow.astro'
+import LibraryIcon from '../icons/Library.astro'
+---
+
+<nav class="nav flex flex-col flex-1">
+
+  <div class="home bg-zinc-900 rounded-lg">
+    <ul>
+      <SideMenuItem href='/'>
+        <HomeIcon/> Inicio
+      </SideMenuItem>
+      <SideMenuItem href='/#'>
+        <SearchIcon/> Buscar
+      </SideMenuItem>
+    </ul>
+  </div>
+
+  <div class="bg-zinc-900 rounded-lg p-2 px-6 flex flex-1 flex-col gap-4">
+
+    <div class="library flex justify-between">
+
+      <button class="item-link flex gap-4 items-center py-3 px-f transition duration-300">
+        <LibraryIcon/>
+        Tu biblioteca
+      </button>
+
+      <div class="library_options flex gap-2">
+        <button class="rouded-icon item-link p-2 rounded-full transition duration-300 hover:bg-zinc-800"><PlusIcon/></button>
+        <button class="rouded-icon item-link p-2 rounded-full transition duration-300 hover:bg-zinc-800"><RightArrowIcon/></button>
+      </div>
+    </div>
+
+    <div class="options-view flex gap-2">
+      <button class="rounded-full transition duration-300 bg-zinc-800 p-1 px-2 flex text-zinc-200 hover:bg-zinc-700">Playlists</button>
+      <button class="rounded-full transition duration-300 bg-zinc-800 p-1 px-2 flex text-zinc-200 hover:bg-zinc-700">Álbumes</button>
+    </div>
+
+    <div class="options-search flex items-center justify-between">
+      <div class="library_search flex items-center">
+        <input class="text-sm" type="text" placeholder="Buscar en Tu biblioteca">
+        <button class=""><SearchIcon/></button>
+      </div>
+      <span class="rouded-icon item-link recent">
+        <button>
+          <span>Recientes</span>
+          <span><MenuIcon/></span>
+        </button>
+      </span>
+    </div>
+  </div>
+
+
+
+</nav>
+
+<style>
+  .nav {
+    gap: .8rem;
+  }
+  .home ul {
+    padding: .8rem 1.2rem;
+  }
+  .library {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .options-view button {
+    padding: .4rem 1.2rem;
+  }
+  .recent button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    gap: 10px;
+  }
+  .library_search {
+    display: flex;
+  }
+  .library_search input {
+    width: 0;
+  }
+  .library_search:hover {
+    background: #27272a;
+    padding: 20px;
+  }
+</style>
+
+
+<style is:global>
+  .item-link {
+    font-size: 1.6rem;
+		color: #acacac;
+		transition:all ease .3s;
+	}
+	.item-link svg {
+		fill: #acacac;
+		transition:all ease .3s;
+	}
+	.item-link:hover, .item-link:hover svg {
+		color: #FFF;
+		fill: #FFF;
+	}
+  .rouded-icon svg {
+    width: 16px;
+  }
+  .library_options button .svg {
+    width: 16px;
+    height: 16px;
+    fill: #acacac;
+		transition:all ease .3s;
+  }
+</style>
