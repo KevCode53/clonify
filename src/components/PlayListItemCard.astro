@@ -1,0 +1,74 @@
+---
+import PlayButtonIcon from '@/icons/PlayBtn.astro'
+import { type Playlist } from "@/lib/data";
+
+interface Props {
+  playlist: Playlist;
+}
+
+const { playlist } = Astro.props
+const {id, cover, title, artists, color} = playlist
+
+const artistString = artists.join(", ")
+---
+
+<a class="playlist-item flex relative items-center rounded-md" href="">
+  <picture class="album-cover">
+    <img src={cover} alt={`Cover of ${title} by ${artistString}`} />
+  </picture>
+  <div class="album-info truncate">
+    <div class="album-title truncate">
+      <h4 class="truncate">{title}</h4>
+    </div>
+  </div>
+  <button class="button-play">
+    <PlayButtonIcon/>
+  </button>
+</a>
+
+
+<style>
+  .playlist-item {
+    width: 32%;
+    gap: 1rem;
+    background: rgba(255,255,255,.1);
+    transition: .3s all ease;
+    position: relative;
+    height: 7rem;
+    height: clamp(4.8rem, 4vw, 6rem);
+    border-radius: .4rem;
+    overflow: hidden;
+    min-width: 22rem;
+  }
+  .playlist-item picture {
+    height: 100%;
+  }
+  .playlist-item picture img {
+    object-fit: contain;
+    height: 100%;
+  }
+  .playlist-item:hover {
+    background: rgba(255,255,255,.3);
+  }
+  .album-title{
+    font-size: clamp(1rem, 1vw, 1.3rem);
+  }
+  .button-play {
+    height: clamp(2.5rem, 2vw, 4rem);
+    width: clamp(2.5rem, 2vw, 4rem);
+    background:#1DD65F;
+    border-radius: 50%;
+    opacity: 0;
+    transition: .1s all ease;
+    position: absolute;
+    right: 1rem;
+    padding: .5rem;
+  }
+  .playlist-item:hover .button-play {
+    opacity: 1;
+    box-shadow: .1rem .5rem .5rem rgba(0,0,0, .5);
+  }
+  .button-play .svg {
+    height: 4.2rem;
+  }
+</style>
