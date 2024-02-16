@@ -12,9 +12,17 @@ const {id, cover, title, artists, color} = playlist
 const artistString = artists.join(", ")
 ---
 
-<a class="playlist-item flex relative items-center rounded-md" href="">
+<a
+  class="playlist-item flex relative items-center rounded-md"
+  href={`/playlist/${id}`}
+  transition:name=`playlist ${id} box`
+>
   <picture class="album-cover">
-    <img src={cover} alt={`Cover of ${title} by ${artistString}`} />
+    <img
+      src={cover}
+      alt={`Cover of ${title} by ${artistString}`}
+      transition:name=`playlist ${id} image`
+    />
   </picture>
   <div class="album-info truncate">
     <div class="album-title truncate">
@@ -29,7 +37,6 @@ const artistString = artists.join(", ")
 
 <style>
   .playlist-item {
-    width: 32%;
     gap: 1rem;
     background: rgba(255,255,255,.1);
     transition: .3s all ease;
@@ -62,7 +69,10 @@ const artistString = artists.join(", ")
     transition: .1s all ease;
     position: absolute;
     right: 1rem;
-    padding: .5rem;
+    padding: clamp(.5rem, 2vw, 1rem);
+  }
+  .button-play:hover {
+    transform: scale(105%);
   }
   .playlist-item:hover .button-play {
     opacity: 1;

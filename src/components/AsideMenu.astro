@@ -16,7 +16,7 @@ import SideMenuItem from '@/components/SideMenuItem.astro'
 import SideMenuCard from '@/components/SideMenuCard.astro'
 ---
 
-<nav class="nav flex flex-col flex-1">
+<nav class="nav flex flex-col flex-1 overflow-hidden">
 
   <div class="home bg-zinc-900 rounded-lg">
     <ul>
@@ -29,7 +29,7 @@ import SideMenuCard from '@/components/SideMenuCard.astro'
     </ul>
   </div>
 
-  <div class="container bg-zinc-900 rounded-lg flex flex-col flex-1 overflow-y-auto">
+  <div class="container bg-zinc-900 rounded-lg flex flex-col flex-1 overflow-y-auto overx">
 
     <div class="options">
 
@@ -353,6 +353,17 @@ import SideMenuCard from '@/components/SideMenuCard.astro'
     padding: .8rem;
     display: flex;
     flex-direction: column;
+  }
+  .recent-container::-webkit-scrollbar {
+    width: 1.2rem;
+  }
+  .recent-container::-webkit-scrollbar-thumb {
+    background: transparent;
+    transition: .3s all ease;
+    opacity: 0;
+  }
+  .recent-container:hover::-webkit-scrollbar-thumb{
+    background: #898989;
   }
   .recent button {
     display: flex;

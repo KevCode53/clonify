@@ -1,0 +1,52 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PlayListItemCard from '@/components/PlayListItemCard.astro'
+
+import { allPlaylists, songs } from '@/lib/data';
+
+const {id} = Astro.params
+const playlist = allPlaylists.find(playlist => playlist.id === id)
+const playlistSongs = songs.filter(song => song.albumId === playlist?.albumId)
+---
+
+<Layout title="Clonify">
+  <section
+    id="playlist-container"
+    class="playlist relative text-white bg-green-900 overflow-x-hidden"
+    transition:name=`playlist ${id} box`
+  >
+
+    <header>
+      <div class="playlist-info"></div>
+      <button class="img-btn">
+        <picture class="album-cover">
+          <img
+            src={playlist?.cover}
+            alt={`Cover of ${playlist?.title}`}
+            transition:name=`playlist ${playlist?.id} image`
+          />
+        </picture>
+      </button>
+      <h1>{playlist.title}</h1>
+    </header>
+
+    <div class="relative z-10  py-6">
+      <!-- Greetings -->
+    </div>
+
+    <div class="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/80"></div>
+
+  </section>
+</Layout>
+
+<style>
+  .playlist-info {
+    display: flex;
+    width: 100%;
+    color: #FFF;
+    border: 1px solid;
+  }
+  .img-btn {
+    width: clamp(128px,128px + (100vw - var(399px,0px) - var(420px,0px) - 600px)/424*104,232px)
+  }
+</style>

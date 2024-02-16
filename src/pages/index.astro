@@ -11,9 +11,9 @@ import PlayListItemCard from '@/components/PlayListItemCard.astro'
 
     <!-- PageHeader -->
 
-    <div class="relative z-10 px-6">
+    <div class="relative z-10  ">
       <!-- Greetings -->
-      <h1 class="text-8xl">Buenos Dias</h1>
+      <h1 class="text-6xl greetings">Buenos Dias</h1>
 
       <div class="playlists-container">
         {
@@ -30,10 +30,30 @@ import PlayListItemCard from '@/components/PlayListItemCard.astro'
 <style>
   .playlist {
   }
+  .greetings {
+    padding: 2.4rem;
+  }
+  @media (min-width: 0px) {
+    .playlists-container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 815px) {
+    .playlists-container {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  @media (min-width: 1141px) {
+    .playlists-container {
+      gap: 1.2rem;
+    }
+  }
   .playlists-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    min-width: 45rem;
+    padding: 0 2.4rem;
+    display: grid;
+    grid-auto-rows: 6.4rem;
+    grid-template-columns: auto/repeat(auto-fill, minmax(max(27rem), 25%), 1fr);
+    grid-template-rows: 6.4rem;
+    gap: .8rem;
   }
 </style>
