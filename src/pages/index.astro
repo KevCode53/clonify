@@ -1,8 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import {Greeting} from '@/components/Greeting'
 import { playlists } from '@/lib/data';
 
-import PlayListItemCard from '@/components/PlayListItemCard.astro'
+import {PlayListItemCard} from '@/components/PlayListItemCard/PlayListItemCard'
 
 ---
 
@@ -13,11 +14,11 @@ import PlayListItemCard from '@/components/PlayListItemCard.astro'
 
     <div class="relative z-10  ">
       <!-- Greetings -->
-      <h1 class="text-6xl greetings">Buenos Dias</h1>
+      <Greeting />
 
       <div class="playlists-container">
         {
-          playlists.slice(0, 6).map((playlist) => <PlayListItemCard playlist={playlist}/>)
+          playlists.slice(0, 6).map((playlist) => <PlayListItemCard client:load playlist={playlist}/>)
         }
       </div>
     </div>
@@ -31,7 +32,7 @@ import PlayListItemCard from '@/components/PlayListItemCard.astro'
   .playlist {
   }
   .greetings {
-    padding: 2.4rem;
+    /* padding: 2.4rem; */
   }
   @media (min-width: 0px) {
     .playlists-container {
@@ -51,9 +52,10 @@ import PlayListItemCard from '@/components/PlayListItemCard.astro'
   .playlists-container {
     padding: 0 2.4rem;
     display: grid;
-    grid-auto-rows: 6.4rem;
-    grid-template-columns: auto/repeat(auto-fill, minmax(max(27rem), 25%), 1fr);
-    grid-template-rows: 6.4rem;
+    min-width: 40rem;
+    /* grid-auto-rows: 6.4rem; */
+    /* grid-template-columns: auto/repeat(auto-fill, minmax(max(27rem), 25%), 1fr); */
+    /* grid-template-rows: 6.4rem; */
     gap: .8rem;
   }
 </style>

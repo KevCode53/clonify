@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import PlayListItemCard from '@/components/PlayListItemCard.astro'
-
+import {PlayOptions} from '@/components/PlayOptions/PlayOptions'
+import {ListSongs} from '@/components/ListSongs/ListSongs'
 import { allPlaylists, songs } from '@/lib/data';
 
 const {id} = Astro.params
@@ -12,41 +12,86 @@ const playlistSongs = songs.filter(song => song.albumId === playlist?.albumId)
 <Layout title="Clonify">
   <section
     id="playlist-container"
-    class="playlist relative text-white bg-green-900 overflow-x-hidden"
+    class="playlist relative text-white overflow-x-hidden"
     transition:name=`playlist ${id} box`
   >
 
     <header>
-      <div class="playlist-info"></div>
-      <button class="img-btn">
-        <picture class="album-cover">
-          <img
-            src={playlist?.cover}
-            alt={`Cover of ${playlist?.title}`}
-            transition:name=`playlist ${playlist?.id} image`
-          />
-        </picture>
-      </button>
-      <h1>{playlist.title}</h1>
+      <div class="playlist-info">
+        <button class="img-btn">
+          <picture class="album-cover">
+            <img
+              src={playlist?.cover}
+              alt={`Cover of ${playlist?.title}`}
+              transition:name={`playlist ${playlist?.id} image`}
+            />
+          </picture>
+        </button>
+        <div class="info">
+          <span>Playlist</span>
+          <h4
+            transition:name=`playlist ${playlist?.title} title`
+          >
+            {playlist?.title}
+          </h4>
+          <picture>
+            <img src="" alt="">
+            <span>User</span>
+            <span>years</span>
+            <span>songs</span>
+            <span>time</span>
+          </picture>
+        </div>
+      </div>
     </header>
+
+    <section>
+      <PlayOptions client:load />
+      <ListSongs client:load songs={playlistSongs} />
+    </section>
 
     <div class="relative z-10  py-6">
       <!-- Greetings -->
     </div>
 
-    <div class="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/80"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/80 -z-10"></div>
 
   </section>
 </Layout>
 
 <style>
   .playlist-info {
+    height: 30vh;
+    max-height: 40rem;
     display: flex;
     width: 100%;
     color: #FFF;
-    border: 1px solid;
+    padding: 2rem;
+    gap: 2rem;
+    padding-top: none;
   }
   .img-btn {
-    width: clamp(128px,128px + (100vw - var(399px,0px) - var(420px,0px) - 600px)/424*104,232px)
+    border: 2px solid red;
+    width: clamp(200px, 2vw, 800px);
+    height: clamp(200px, 2vw, 800px);
+    /* width: clamp(2rem,2rem + (100vw - var(399px,0px) - var(420px,0px) - 600px)/424*104,232px) */
+  }
+  .playlist-info .img-btn  picture {
+    height: 100%;
+  }
+  .playlist-info .img-btn  picture img {
+    object-fit: contain;
+    border-radius: .4rem;
+    height: 100%
+  }
+  .playlist-info .info {
+    font-size: clamp(1rem, 5vw, 1.2rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+  }
+  .playlist-info .info h4 {
+    font-size: clamp(1.4rem, 5vw, 4.5rem);
+    margin: -1rem 0;
   }
 </style>

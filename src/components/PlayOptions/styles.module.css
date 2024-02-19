@@ -1,0 +1,51 @@
+.play_options {
+  display: flex;
+  padding: 2rem;
+  gap: 2rem;
+  align-items: center;
+}
+.play_options svg {
+  width: 2.4rem;
+  height: 2.4rem;
+  fill: rgba(255,255,255,.5);
+}
+.play_options svg:hover {
+  fill: rgba(255,255,255);
+}
+
+.play_button {
+  height: 4.8rem;
+  width: 4.8rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #1ED760;
+}
+.play_button:hover {
+  transform: scale(105%);
+  box-shadow: .1rem .5rem .5rem rgba(0,0,0, .5);
+}
+.play_button svg, .play_button:hover svg {
+  height: 2.4rem;
+  width: 2.4rem;
+  fill: #000;
+}
+
+.green svg {
+  fill: #1ED760;
+}
+
+.view_playlist {
+  margin-left: auto;
+  position: relative;
+}
+.view_playlist svg {
+  height: 1.6rem;
+  width: 1.6rem;
+}
+
+.list_container {
+  position: absolute;
+  display: none;
+}
