@@ -39,12 +39,12 @@ export const PlayListItemCard = ({playlist}) => {
         </div>
 
         {
-          isPlaying && currentMusic?.playlist?.id === playlist.id && (
+          isPlaying && currentMusic?.playlist?.id === id && (
             <AudioSpectum />
           )
         }
       </a>
-      <CardPlayBtn id={playlist?.id} client:visible />
+      <CardPlayBtn id={id} client:visible />
 
     </article>
   )
