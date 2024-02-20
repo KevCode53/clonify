@@ -2,7 +2,7 @@
   height: 100%;
   display: flex;
   align-items: center;
-  gap: .8rem;
+  gap: 2rem;
   padding: 1rem;
 }
 
@@ -21,9 +21,31 @@
 
 .infoSong {
   display: grid;
+  gap: -.5rem;
   grid-template-rows: repeat(2, 1fr);
+}
+.infoSong a:hover {
+  cursor: default;
+  text-decoration: underline;
+  color: #FFF;
 }
 .infoSong span {
   font-size: 1.2rem;
   font-weight: bold;
+  color: rgba(255,255,255,.5);
+  margin: -.1rem;
+}
+.infoSong h3 {
+  margin: -.1rem;
+}
+.likeBtn {
+  padding: .5rem;
+}
+.likeBtn:hover svg {
+  fill: #FFF;
+}
+.likeBtn svg {
+  height: 1.6rem;
+  width: 1.6rem;
+  fill: rgba(255,255,255,.5);
 }

@@ -17,6 +17,7 @@
 .playBtnContainer svg {
   height: 1.6rem;
   width: 1.6rem;
+  fill: #000;
 }
 :hover .playBtnContainer:hover {
   transform: scale(105%);
