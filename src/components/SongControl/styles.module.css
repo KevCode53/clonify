@@ -1,0 +1,11 @@
+.current_song_time_container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.current_song_time_container span {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: rgba(255,255,255,.5);
+}

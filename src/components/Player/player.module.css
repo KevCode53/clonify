@@ -1,20 +1,24 @@
 .player {
   color: #FFF;
-  display: flex;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: repeat(3, 1fr);
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   height: 100%;
 }
 
 .player_controls {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  display: flex;
   align-items: center;
   justify-items: center;
-  gap: 1rem;
+  gap: 2rem;
+  justify-self: center;
 }
 .player_controls div {
   width: min-content;
+  padding: 1rem;
 }
 .nextSong svg, .backSong svg, .randomIcon svg, .repeatIcon svg {
   fill: rgba(255,255,255, .5);
@@ -45,4 +49,17 @@
   height: 1.6rem;
   width: 1.6rem;
   fill: #000;
+}
+
+
+.song_controls {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  width: 40rem;
+}
+
+
+.volume_controls {
+  display: flex;
+  justify-content: flex-end;
 }

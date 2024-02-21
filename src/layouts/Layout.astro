@@ -103,5 +103,16 @@ const { title } = Astro.props;
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-ftont-smoothing: grayscale;
 	}
+	*::-webkit-scrollbar {
+    width: 1.2rem;
+  }
+  *::-webkit-scrollbar-thumb {
+    background: transparent;
+    transition: .3s all ease;
+    opacity: 0;
+  }
+  *:hover::-webkit-scrollbar-thumb{
+    background: #898989;
+  }
 
 </style>

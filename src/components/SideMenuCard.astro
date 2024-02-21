@@ -14,13 +14,28 @@ const {id, cover, title, artists, color} = playlist
 const artistString = artists.join(", ")
 ---
 
-<a class="playlist-item flex relative items-center rounded-md" href="">
+<a
+  href={`/playlist/${id}`}
+  class="playlist-item flex relative items-center rounded-md"
+  transition:name=`playlist ${id} box`
+>
   <picture class="h-12 w-12 flex-none album-cover">
-    <img src={cover} alt={`Cover of ${title} by ${artistString}`} class="object-cover w-full h-full rounded-md"/>
+    <img
+      src={cover}
+      alt={`Cover of ${title} by ${artistString}`}
+      class="object-cover w-full h-full rounded-md"
+      transition:name=`playlist ${playlist?.id} image`
+
+    />
   </picture>
   <div class="album-info truncate">
     <div class="album-title truncate">
-      <h4 class="truncate">{title}</h4>
+      <h4
+        class="truncate"
+        transition:name=`playlist ${playlist?.title} title`
+      >
+        {title}
+      </h4>
       <span>{artistString}</span>
     </div>
     <span><PlayingIcon/></span>

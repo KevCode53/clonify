@@ -1,8 +1,10 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import {PlayOptions} from '@/components/PlayOptions/PlayOptions'
-import {ListSongs} from '@/components/ListSongs/ListSongs'
 import { allPlaylists, songs } from '@/lib/data';
+import { ListMusicTable } from '@/components/ListMusicTable/ListMusicTable'
+
+import styles from './styles.module.css'
 
 const {id} = Astro.params
 const playlist = allPlaylists.find(playlist => playlist.id === id)
@@ -12,43 +14,43 @@ const playlistSongs = songs.filter(song => song.albumId === playlist?.albumId)
 <Layout title="Clonify">
   <section
     id="playlist-container"
-    class="playlist relative text-white overflow-x-hidden"
+    style=`background: ${playlist?.color?.accent}`
+    class={styles.playlist_container}
     transition:name=`playlist ${id} box`
   >
 
-    <header>
-      <div class="playlist-info">
-        <button class="img-btn">
-          <picture class="album-cover">
-            <img
-              src={playlist?.cover}
-              alt={`Cover of ${playlist?.title}`}
-              transition:name={`playlist ${playlist?.id} image`}
-            />
-          </picture>
-        </button>
-        <div class="info">
-          <span>Playlist</span>
-          <h4
-            transition:name=`playlist ${playlist?.title} title`
-          >
-            {playlist?.title}
-          </h4>
-          <picture>
-            <img src="" alt="">
-            <span>User</span>
-            <span>years</span>
-            <span>songs</span>
-            <span>time</span>
-          </picture>
-        </div>
+    <div class={styles.playlist_info}>
+      <button class={styles.picture_btn}>
+        <picture class="album-cover">
+          <img
+            src={playlist?.cover}
+            alt={`Cover of ${playlist?.title}`}
+            transition:name=`playlist ${playlist?.id} image`
+          />
+        </picture>
+      </button>
+      <div class={styles.text_playlist}>
+        <span>Playlist</span>
+        <h4
+          transition:name=`playlist ${playlist?.title} title`
+        >
+          {playlist?.title}
+        </h4>
+        <span>{playlist?.artists}</span>
+        <picture>
+          <img>
+          <span>User</span>
+          <span>years</span>
+          <span>songs</span>
+          <span>time</span>
+        </picture>
       </div>
-    </header>
+    </div>
 
-    <section>
-      <PlayOptions client:load />
-      <ListSongs client:load songs={playlistSongs} />
-    </section>
+    <div>
+      <!-- <PlayOptions client:load /> -->
+      <ListMusicTable client:load songs={playlistSongs} />
+    </div>
 
     <div class="relative z-10  py-6">
       <!-- Greetings -->
@@ -59,7 +61,7 @@ const playlistSongs = songs.filter(song => song.albumId === playlist?.albumId)
   </section>
 </Layout>
 
-<style>
+<!-- <style>
   .playlist-info {
     height: 30vh;
     max-height: 40rem;
@@ -94,4 +96,4 @@ const playlistSongs = songs.filter(song => song.albumId === playlist?.albumId)
     font-size: clamp(1.4rem, 5vw, 4.5rem);
     margin: -1rem 0;
   }
-</style>
+</style> -->

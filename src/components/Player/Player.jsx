@@ -46,7 +46,7 @@ export const Player = () => {
         <CurrentSong client:load image={currentMusic?.song?.image} title={currentMusic?.song?.title} artists={currentMusic?.song?.artists} />
       </div>
 
-      <div className="player h-full">
+      <div className={styles.song_controls}>
         <div className={styles.player_controls}>
           <button className={styles.randomIcon}>
             <Random/>
@@ -74,7 +74,7 @@ export const Player = () => {
         </div>
       </div>
 
-      <div className="volume">
+      <div className={styles.volume_controls}>
         <VolumeControls client:load />
       </div>
 

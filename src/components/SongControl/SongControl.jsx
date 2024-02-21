@@ -1,5 +1,7 @@
-import { Slider } from "@radix-ui/react-slider"
+import { Slider } from "@/components/Slider/Slider"
 import { useEffect, useState } from "react"
+
+import styles from './styles.module.css'
 
 
 export const SongControl = ({audio}) => {
@@ -16,24 +18,35 @@ export const SongControl = ({audio}) => {
     setCurrentTime(audio.current.currentTime)
   }
 
+  const formatTime = time => {
+    if (time === null) {return `0:00`}
+
+    const seconds = Math.floor(time % 60)
+    const minutes = Math.floor(time / 60)
+
+    return `${minutes}:${seconds.toString().padStart(2, '0')}`
+  }
+
   const duration = audio?.current?.duration ?? 0
 
-  console.log(currentTime)
+  console.log(duration)
 
   return (
-    <div className="">
-      {/* <span>{currentTime}</span> */}
+    <div className={styles.current_song_time_container}>
+      <span className="w-14">{formatTime(currentTime)}</span>
       <Slider
         defaultValue={[100]}
         value={[currentTime]}
         max={audio?.current?.duration ?? 0}
         min={0}
-        className="w-[300px]"
+        className="w-full"
         onValueChange={(value) => {
           audio.current.currentTime = value
         }}
       />
-      {/* <span>{duration}</span> */}
+      <span className="w-14">
+        {duration ? formatTime(duration) : `0:00`}
+      </span>
     </div>
   )
 }

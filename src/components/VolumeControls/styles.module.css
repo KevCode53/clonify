@@ -1,6 +1,7 @@
 .controls_container {
   display: flex;
   margin-right: 1rem;
+  justify-self: end;
 }
 .mute_button {
   padding: .5rem;
